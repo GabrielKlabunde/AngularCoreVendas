@@ -1,0 +1,30 @@
+<h1>Tela de Pedidos</h1>
+<div class="col-md-8">
+  <label>Numero do Pedido</label>
+  <input class="form-control" maxlength="20" [(ngModel)]="pedido.numeroPedido" />
+  <label>Quantidade</label>
+  <input class="form-control" type="number" [(ngModel)]="pedido.quantidade"/>
+  <label>Produto</label>
+  <select class="form-control" [(ngModel)]="idProduto">
+    <option *ngFor="let item of produtos" value="{{item.id}}">{{item.descricao}}</option>
+  </select>
+  <button class="btn btn-success" (click)="cadastroPedido()">Salvar</button>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Numero do Pedido</th>
+        <th>Quantidade</th>
+        <th>Valor total</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let pedido of pedidos">
+      <tr>
+        <td>{{pedido.numeroPedido}}</td>
+        <td>{{pedido.quantidade}}</td>
+        <td>{{pedido.produtos.preco * pedido.quantidade}}</td>
+        <td><button class="btn btn-danger" (click)="removerPedido(pedido.id)" >Remover</button></td>
+        <td><button class="btn btn-warning" (click)="carregaPedido(pedido.id)">Alterar</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

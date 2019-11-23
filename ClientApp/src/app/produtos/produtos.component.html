@@ -1,0 +1,27 @@
+<h1>Tela Produtos</h1>
+<div class="col-md-8">
+  <label>Descrição</label>
+  <input class="form-control" maxlength="200" [(ngModel)]="produto.descricao"/>
+  <label>Preço</label>
+  <input class="form-control" [(ngModel)]="produto.preco" type="number"/>
+  <br />
+  <button class="btn btn-success" (click)="cadastrar()">{{button}}</button>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Descrição</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of lista">
+      <tr>
+        <td>{{item.id}}</td>
+        <td>{{item.descricao}}</td>
+        <td>{{item.preco}}</td>
+        <td><button class="btn btn-danger" (click)="removerProduto(item.id)">Remover</button></td>
+        <td><button class="btn btn-warning" (click)="carregaCampos(item.id)">Alterar</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
